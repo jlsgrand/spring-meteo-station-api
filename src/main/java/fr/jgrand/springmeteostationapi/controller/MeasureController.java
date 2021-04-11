@@ -37,7 +37,6 @@ public class MeasureController {
 
     @PostMapping
     public ResponseEntity<Measure> storeMeasure(@RequestBody Measure measure) {
-        measure.setMeasureDateToNow();
         return ResponseEntity.ok(measureRepository.save(measure));
     }
 }

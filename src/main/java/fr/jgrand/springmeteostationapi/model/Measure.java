@@ -42,7 +42,4 @@ public class Measure {
         return measureDate;
     }
 
-    public void setMeasureDateToNow() {
-        this.measureDate = LocalDateTime.now();
-    }
 }
