@@ -2,7 +2,7 @@ package fr.jgrand.springmeteostationapi.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 public class Measure {
@@ -20,7 +20,7 @@ public class Measure {
     @Column(precision = 6, scale = 2)
     private BigDecimal value;
 
-    private OffsetDateTime measureDate;
+    private LocalDateTime measureDate;
 
     public Long getId() {
         return id;
@@ -38,11 +38,11 @@ public class Measure {
         return unit;
     }
 
-    public OffsetDateTime getMeasureDate() {
+    public LocalDateTime getMeasureDate() {
         return measureDate;
     }
 
     public void setMeasureDateToNow() {
-        this.measureDate = OffsetDateTime.now();
+        this.measureDate = LocalDateTime.now();
     }
 }
