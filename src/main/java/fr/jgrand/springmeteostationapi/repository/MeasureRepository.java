@@ -12,6 +12,8 @@ import java.util.Optional;
 @Repository
 public interface MeasureRepository extends JpaRepository<Measure, Long> {
 
+    Optional<Measure> findFirstByTypeOrderByValueDesc(MeasureType measureType);
+
     Optional<Measure> findFirstByTypeOrderByMeasureDateDesc(MeasureType measureType);
 
     List<Measure> findByTypeAndMeasureDateBetween(MeasureType measureType, LocalDateTime startDate, LocalDateTime endDate);

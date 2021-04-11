@@ -28,6 +28,12 @@ public class MeasureController {
         return lastMeasure.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/top")
+    public ResponseEntity<Measure> getTopMeasureByType(@RequestParam("measure-type") MeasureType measureType) {
+        Optional<Measure> lastMeasure = measureRepository.findFirstByTypeOrderByValueDesc(measureType);
+        return lastMeasure.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @GetMapping
     public List<Measure> getMeasuresByType(@RequestParam("measure-type") MeasureType measureType,
                                            @RequestParam("start-date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime startDate,
