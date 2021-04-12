@@ -1,4 +1,7 @@
 spring:
+    jpa:
+        hibernate:
+            ddl-auto: update
     datasource:
         url: ${JDBC_DATABASE_URL}
         username: ${JDBC_DATABASE_USERNAME}
