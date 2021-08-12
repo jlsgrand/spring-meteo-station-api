@@ -22,6 +22,16 @@ public class Measure {
 
     private LocalDateTime measureDate;
 
+    public Measure() {
+    }
+
+    public Measure(MeasureType type, MeasureUnit unit, BigDecimal value, LocalDateTime measureDate) {
+        this.type = type;
+        this.unit = unit;
+        this.value = value;
+        this.measureDate = measureDate;
+    }
+
     public Long getId() {
         return id;
     }

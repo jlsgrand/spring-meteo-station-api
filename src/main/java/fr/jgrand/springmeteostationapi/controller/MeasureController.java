@@ -26,12 +26,21 @@ public class MeasureController {
     public ResponseEntity<Measure> getLastMeasureByType(@RequestParam("measure-type") MeasureType measureType) {
         Optional<Measure> lastMeasure = measureRepository.findFirstByTypeOrderByMeasureDateDesc(measureType);
         return lastMeasure.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        /*
+            // Le code équivalent (mais moins concis)
+
+            if (lastMeasure.isPresent()) {
+                return ResponseEntity.ok(lastMeasure.get());
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+         */
     }
 
     @GetMapping("/top")
     public ResponseEntity<Measure> getTopMeasureByType(@RequestParam("measure-type") MeasureType measureType) {
-        Optional<Measure> lastMeasure = measureRepository.findFirstByTypeOrderByValueDesc(measureType);
-        return lastMeasure.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        Optional<Measure> topMeasure = measureRepository.findFirstByTypeOrderByValueDesc(measureType);
+        return topMeasure.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping
